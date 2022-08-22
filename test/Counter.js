@@ -41,10 +41,11 @@ describe('Counter', () => {
             await transaction.wait()
 
             expect(await counter.count()).to.equal(0)
+
+            // Cannot decrement count below 0
+            await expect(counter.decrement()).to.be.reverted
+
+
         })
-
-
-
-
     })
 })
